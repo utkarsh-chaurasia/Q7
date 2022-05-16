@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 0.877);
+        }
+        
+        .myclock {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 250px;
+            color: rgb(0, 195, 255);
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="myclock" id="clock" onload=show()></div>
+    <script>
+        function show() {
+            var a = new Date();
+            var h = a.getHours();
+            var m = a.getMinutes();
+            var s = a.getSeconds();
+            var time;
+            if (s < 10) {
+                time = h + ":" + m + ":" + "0" + s;
+            } else if (m < 10 && s > 10) {
+                time = h + ":" + "0" + m + ":" + s;
+            } else if (s < 10 && m < 10) {
+                time = h + ":" + "0" + m + ":" + "0" + s;
+            } else {
+                time = h + ":" + m + ":" + s;
+            }
+            document.getElementById('clock').innerHTML = time;
+            setTimeout(show, 1000)
+        }
+        show();
+    </script>
+</body>
+
+</html>
